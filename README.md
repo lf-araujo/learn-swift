@@ -11,7 +11,7 @@ Learn Apple's Swift programming language interactively through these playgrounds
 
 ### What you'll need
 
-  You will need XCode 8.2 GM (or later) and a Mac to run it on.
+  Any system where Swift works.
 
 ### Purpose & Goal
 
@@ -25,7 +25,7 @@ Learn Apple's Swift programming language interactively through these playgrounds
   along the way. Play the 'what-if' game. These are live playgrounds which offer
   near-realtime feedback of edits.
 
-###Source of Content
+### Source of Content
 
   I created these while working my way through the "Language Guide" section of
   Apple's book, "The Swift Programming Language". I feel the information from
@@ -44,3 +44,5 @@ Learn Apple's Swift programming language interactively through these playgrounds
   Most  playgrounds updated to Swift 3 by Christopher Bell.
 
   Sections 24, 25, 26 by Van Simmons
+
+  Lastly lf-araujo updated it to latest Swift 4.2 under Ubuntu.
