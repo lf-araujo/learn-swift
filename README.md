@@ -5,15 +5,15 @@ Originally by Paul Nettle: https://github.com/nettlep/learn-swift
 
 Learn Apple's Swift programming language interactively through these playgrounds.
 
-###Target Audience
+### Target Audience
 
   Programmers familiar with C++ and/or Objective-C.
 
-###What you'll need
+### What you'll need
 
   You will need XCode 8.2 GM (or later) and a Mac to run it on.
 
-###Purpose & Goal
+### Purpose & Goal
 
   More than a primer, these playgrounds are intended to get programmers up to
   speed on Swift as fast as possible so they can begin using Swift productively.
@@ -36,7 +36,7 @@ Learn Apple's Swift programming language interactively through these playgrounds
 
   If you don't already have the book, it's free. You should probably get it.
 
-###Contributors
+### Contributors
 
   Thanks to Rafał Wójcik for his quick work to update these playgrounds to
   incorporate the Swift language changes that came with XCode 7.

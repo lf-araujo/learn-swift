@@ -13,7 +13,8 @@
 ///  assignes or returns an Error(Int, String), it can set populate the Tuple with Int/String par
 ///  for the specific error condition.
 ///
-///* Alternative to the enumeration storing named types, Swift enumerations can have a type. If
+///* Alter{
+native to the enumeration storing named types, Swift enumerations can have a type. If
 ///  that type is Int, then they will behave more like their C-style counterparts.
 ///------------------------------------------------------------------------------------------------
 
