@@ -1,48 +1,45 @@
 ///------------------------------------------------------------------------------------------------
-///Checked and updated September 2016
-///Things to know:
+/// 
+/// Things to know:
 ///
-///* Methods can be in the form of Instance Methods, which apply to a given instance of a class
-///  struct or enumeration and Type Methods, which apply to the type itself, like static methods
-///  in C-like languages.
+/// * Methods can be in the form of Instance Methods, which apply to a given instance of a class
+///   struct or enumeration and Type Methods, which apply to the type itself, like static methods
+///   in C-like languages.
 ///------------------------------------------------------------------------------------------------
 
-///Instance Methods
+/// Instance Methods
 ///
-///Instance methods work on instances of a class, structure or enumeration. In order to call an
-///instance method, you must first instantiate the class, structure or enumeration and then place
-///the call on that instance.
+/// Instance methods work on instances of a class, structure or enumeration. In order to call an
+/// instance method, you must first instantiate the class, structure or enumeration and then place
+/// the call on that instance.
 ///
-///Here, we'll create a class with a single instance method:
-class SomeClass
-{
-	func doSomething()
-	{
+/// Here, we'll create a class with a single instance method:
+class SomeClass {
+	func doSomething() {
 		///...
 	}
 }
 
-///Since this should be pretty clear, let's jump into parameters for methods with internal and
-///external names.
+/// Since this should be pretty clear, let's jump into parameters for methods with internal and
+/// external names.
 ///
-///The defaults for external names are different for methods than they are for global functions.
+/// The defaults for external names are different for methods than they are for global functions.
 ///
-///For methods, the default behavior is that the caller must always specify all but the first
-///external parameter name when calling the method. Member authors need not specify the external
-///names for those parameters as the default is to treat all parameters as if they had the "#"
-///specifier, which creates an external parameter name that mirrors the local parameter name.
+/// For methods, the default behavior is that the caller must always specify all but the first
+/// external parameter name when calling the method. Member authors need not specify the external
+/// names for those parameters as the default is to treat all parameters as if they had the "#"
+/// specifier, which creates an external parameter name that mirrors the local parameter name.
 ///
-///To override this default-external-names-for-second-and-beyond-parameters, specify an "_" as the
-///external parameter name for all but the first parameter.
+/// To override this default-external-names-for-second-and-beyond-parameters, specify an "_" as the
+/// external parameter name for all but the first parameter.
 ///
-///If you want the caller to also use external name for the first parameter, be sure to add your
-///own '#' symbol to the local name or specify the external name explicitly.
+/// If you want the caller to also use external name for the first parameter, be sure to add your
+/// own '#' symbol to the local name or specify the external name explicitly.
 ///
-///Here's a class that exercises the various combinations of internal and external name usages:
-class Counter
-{
-	var count = 0;
-	
+/// Here's a class that exercises the various combinations of internal and external name usages:
+class Counter {
+	var count = 0
+
 	///No parameters
 	func increment()
 	{

@@ -1,5 +1,5 @@
 ///------------------------------------------------------------------------------------------------
-/// Checked September 2016
+///
 /// Things to know:
 ///
 /// * Properties store values in classes, structures and enumerations.
@@ -193,7 +193,7 @@ class StepCounter {
 	}
 }
 
-///Let's create an instance of StepCounter so we can try out our observer
+/// Let's create an instance of StepCounter so we can try out our observer
 let stepCounter = StepCounter()
 
 ///The following will first call 'willSet' on the 'totalSteps' property, followed by a change to
@@ -222,7 +222,7 @@ class StepCounterShorterWithModify {
 }
 var stepper = StepCounterShorterWithModify()
 stepper.totalSteps = 345
-stepper.totalSteps ///This reports totalSteps is now set to 89
+stepper.totalSteps // This reports totalSteps is now set to 89
 
 ///------------------------------------------------------------------------------------------------
 /// Type Properties
