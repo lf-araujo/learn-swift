@@ -40,59 +40,52 @@ class SomeClass {
 class Counter {
 	var count = 0
 
-	///No parameters
-	func increment()
-	{
+	// No parameters
+	func increment() {
 		count += 1
 	}
-	
-	///One parameter, no external parameter name needed by caller
-	func incrementBy(amount: Int)
-	{
+
+	// One parameter, no external parameter name needed by caller
+	func incrementBy(amount: Int) {
 		count += amount
 	}
-	
-	///One parameter, overriding default behavior to requre caller to use external parameter name
-	///on first (and only) parameter
-	func addValueTo(value amount: Int)
-	{
+
+	// One parameter, overriding default behavior to requre caller to use external parameter name
+	// on first (and only) parameter
+	func addValueTo(value amount: Int) {
 		count += amount
 	}
-	
-	///Two parameters. Since no external names are specified, default behavior is implied: Caller
-	///need not specify the first parameter's external name, but must specify all others:
-	func addTwiceWithExternalImplied(first: Int, second: Int)
-	{
+
+	// Two parameters. Since no external names are specified, default behavior is implied: Caller
+	// need not specify the first parameter's external name, but must specify all others:
+	func addTwiceWithExternalImplied(first: Int, second: Int) {
 		count += first
 		count += second
 	}
-	
-	///Two parameters. Using explicit external parameter names on all parameters to force caller
-	///to use them for all parameters, including the first.
-	func addTwiceWithExternalSpecified(a first: Int, b second: Int)
-	{
+
+	// Two parameters. Using explicit external parameter names on all parameters to force caller
+	// to use them for all parameters, including the first.
+	func addTwiceWithExternalSpecified(a first: Int, b second: Int) {
 		count += first
 		count += second
 	}
-	
-	///Two parameters. Using the external parameter shorthand ("#") to force caller to use
-	///external parameter name on first parameter and defaulting to shared local/external names
-	///for the rest.
-	func addTwiceWithExternalSpecified2(first: Int, second: Int)
-	{
+
+	// Two parameters. Using the external parameter shorthand ("#") to force caller to use
+	// external parameter name on first parameter and defaulting to shared local/external names
+	// for the rest.
+	func addTwiceWithExternalSpecified2(first: Int, second: Int) {
 		count += first
 		count += second
 	}
-	
+
 	///Two parameters. Disabling all external names
-	func addTwiceWithExternalSpecified3(first: Int, _ second: Int)
-	{
+	func addTwiceWithExternalSpecified3(first: Int, _ second: Int) {
 		count += first
 		count += second
 	}
 }
 
-///Now let's see how we call each of those functions
+/// Now let's see how we call each of those functions
 var counter = Counter()
 counter.increment()
 counter.incrementBy(amount: 4)
@@ -103,66 +96,57 @@ counter.addTwiceWithExternalSpecified2(first: 10, second: 10)
 counter.addTwiceWithExternalSpecified3(first: 10, 10)
 counter.count
 
-///The 'self' property refers to the current instance of a class, structure or enumeration. For
-///C++ developers, think of 'self' as 'this'.
-class Point
-{
+/// The 'self' property refers to the current instance of a class, structure or enumeration. For
+/// C++ developers, think of 'self' as 'this'.
+class Point {
 	var x: Int = 10
-	
-	func setX(x: Int)
-	{
-		///Using self to disambiguate from the local parameter
+
+	func setX(x: Int) {
+		// Using self to disambiguate from the local parameter
 		self.x = x
 	}
 }
 
 ///------------------------------------------------------------------------------------------------
-///Mutation
+/// Mutation
 ///
-///Instance methods cannot by default modify properties of structures or enumerations. To enable
-///this, mark them as 'mutating':
-struct Point2
-{
+/// Instance methods cannot by default modify properties of structures or enumerations. To enable
+/// this, mark them as 'mutating':
+struct Point2 {
 	var x: Int = 10
 
-	///Note the need for the keyword 'mutating'
-	mutating func setX(x: Int)
-	{
+	// Note the need for the keyword 'mutating'
+	mutating func setX(x: Int) {
 		self.x = x
 	}
 }
 
-///We'll create a constant Point2...
+/// We'll create a constant Point2...
 let fixedPoint = Point2(x: 3)
 
-///Because 'fixedPoint' is constant, we are not allowed to call mutating memthods:
+/// Because 'fixedPoint' is constant, we are not allowed to call mutating memthods:
 ///
-///The following line won't compile:
+/// The following line won't compile:
 ///
-///fixedPoint.setX(4)
+/// fixedPoint.setX(4)
 
-///If you're working with a structure or enumeration (not a class), uou can assign to 'self'
-///directly
-struct Point3
-{
+/// If you're working with a structure or enumeration (not a class), uou can assign to 'self'
+/// directly
+struct Point3 {
 	var x = 0
-	
+
 	///This does not work with classes
-	mutating func replaceMe(newX: Int)
-	{
+	mutating func replaceMe(newX: Int) {
 		self = Point3(x: 3)
 	}
 }
 
-///Assigning to 'self' in an enumeration is used to change to a different member of the same
-///enumeration:
-enum TriStateSwitch
-{
+/// Assigning to 'self' in an enumeration is used to change to a different member of the same
+/// enumeration:
+enum TriStateSwitch {
 	case off, low, high
-	mutating func next()
-	{
-		switch self
-		{
+	mutating func next() {
+		switch self {
 		case .off:
 			self = .low
 		case .low:
@@ -174,59 +158,49 @@ enum TriStateSwitch
 }
 
 ///------------------------------------------------------------------------------------------------
-///Type Methods
+/// ## Type Methods
 ///
-///Type methods are like C++'s static methods.
+/// Type methods are like C++'s static methods.
 ///
-///They can only access Type members.
-struct LevelTracker
-{
+/// They can only access Type members.
+struct LevelTracker {
 	var currentLevel = 1
 	static var highestUnlockedLevel = 1
-	
-	static func unlockedLevel(level: Int)
-	{
-		if level > highestUnlockedLevel
-		{
+
+	static func unlockedLevel(level: Int) {
+		if level > highestUnlockedLevel {
 			highestUnlockedLevel = level
 		}
 	}
-	static func levelIsUnlocked(level: Int) -> Bool
-	{
+	static func levelIsUnlocked(level: Int) -> Bool {
 		return level <= highestUnlockedLevel
 	}
-	mutating func advanceToLevel(level: Int) -> Bool
-	{
-		if LevelTracker.levelIsUnlocked(level: level)
-		{
+	mutating func advanceToLevel(level: Int) -> Bool {
+		if LevelTracker.levelIsUnlocked(level: level) {
 			currentLevel = level
 			return true
-		}
-		else
-		{
+		} else {
 			return false
 		}
 	}
 }
 
-///To call a type method, use the type name, not the instance name:
+/// To call a type method, use the type name, not the instance name:
 LevelTracker.levelIsUnlocked(level: 3)
 
-///If we attempt to use an instance to call a type method, we'll get an error
+/// If we attempt to use an instance to call a type method, we'll get an error
 var levelTracker = LevelTracker()
 
-///The following line will not compile:
+/// The following line will not compile:
 ///
-///levelTracker.levelIsUnlocked(3)
+/// levelTracker.levelIsUnlocked(3)
 
-///For classes, type methods use the 'class' keyword rather than the 'static' keyword:
-class SomeOtherClass
-{
-	class func isGreaterThan100(value: Int) -> Bool
-	{
+/// For classes, type methods use the 'class' keyword rather than the 'static' keyword:
+class SomeOtherClass {
+	class func isGreaterThan100(value: Int) -> Bool {
 		return value > 100
 	}
 }
 
-///We call class type methods with the type name just as we do for structures and enumerations:
+/// We call class type methods with the type name just as we do for structures and enumerations:
 SomeOtherClass.isGreaterThan100(value: 105)
